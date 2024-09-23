@@ -7,6 +7,7 @@ app.use('/test', (req, res) => {
 
 app.use("/hello", (req, res) => {
     res.send("This is Hello method")
+    
 })
 
 app.listen(8080, () => {
