@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const connectDb = require("./config/database");
-const User = require('./models/user')
+const User = require('./models/user');
+const validator = require('validator');
 
 app.use(express.json())
 
@@ -68,17 +69,34 @@ app.delete('/user', async (req, res) => {
 })
 
 //User Update Api
-app.patch('/user', async (req, res) => {
+app.patch('/user/:userId', async (req, res) => {
+  const userId = req.params?.userId;
+  const data = req.body;
+
   try {
-    const data = req.body;
-    const user = await User.findByIdAndUpdate({ _id: req.body.userId }, data,
-      { returnDocument: 'after', 
+    const ALLOWED_UPDATES = ["age", "gender", "photoUrl","skills"];
+    const isUpdateAllowed = Object.keys(data).every((k) => ALLOWED_UPDATES.includes(k));
+
+    if (!isUpdateAllowed) {
+      throw new Error("Update not Allowed");
+    }
+
+    if(data?.skills.length > 10) {
+      throw new Error("skills can not be more than 10");
+    }
+
+    if(!validator.isURL(data?.photoUrl)){
+      throw new Error("photoUrl is not valid");
+    }
+
+    const user = await User.findByIdAndUpdate({ _id: userId }, data,
+      {
+        returnDocument: 'after',
         runValidators: true
       })
     res.send("User updated successfully")
-    console.log(user)
   } catch (err) {
-    res.status(500).send("Something went wrong");
+    res.status(400).send("Updates Failed: " + err.message);
   }
 })
 
