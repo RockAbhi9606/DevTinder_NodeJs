@@ -41,3 +41,27 @@ install nodemon- npm i -g nodemon
 - Install mongoose Library
 - Connect your application to the Database "Connection-url*/devTinder
 - Call the connect function and connect to database before starting application on 7777
+- Create a user-Schena & user Model
+- Create POST /sigup API to add date to database
+- Push some documents using API calls from postman
+- Error HandLing using try , catch
+- JS object vs JSON (difference)
+- Add the express.json middleware to your app
+- Hake your signup API dynamic to recive data from the end user
+- User.findone with duplucate email ids, which abject returned
+- API- Get user by email
+- API - Feed API - GET /feed - get all the users from the database
+- API - Get user by ID
+- Create a delete user API
+- Difference between PATCH and PUT
+- API - Update a user
+- Explore the Mongoose Documention for Model methods
+- What are options in a Model.findOneAndUpdate method, explore more about it
+- API - Update the user with email ID
+
+- Explore schematype options from the documention
+- add required, unique, lowercase, min, minLength, trim
+- Add default
+- Create a custom validate function for gender
+- Improve the DB schema - PUT all appropiate validations on each field in Schema
+- Add timestamps to the userSchema.
