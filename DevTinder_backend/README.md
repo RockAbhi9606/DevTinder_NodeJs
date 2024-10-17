@@ -70,3 +70,31 @@ install nodemon- npm i -g nodemon
 - Install validator
 - Explore validator Library function and Use Vidator funcs for password,email and photoUrl,
 - Never trust req.body
+
+- validate signup data.
+- Install bcrypt package.
+- Create passwordHash using bcrypt.hash and save the user in encrypted password.
+
+- Create Login API
+- Compare passwords and throw errors if email or password is invalid
+- install cookie-parser
+- just send a dummy cookie to user
+- create GET /profile APi and check if you get the cookie back
+- install jsonwebtoken
+- IN login API, after email and password validation, create e JWT token and send it to user in cookies
+- read the cookies inside your profile API and find the logged in user
+- userAuth Middleware
+- Add the userAuth middle ware in profile API and a new sendConnectionRequest API
+- Set the expiry of WT token and cookies to 7 days after.
+- create Userschema method to getJWT().
+- Create Userschema method to comparePassword,passwordInputByUser).
+
+- Explore tinder APIs
+- Create a list all API you can think of in Dev Tinder
+- Group multiple routes under respective routers.
+- Read documentatiton for express.Router.
+- Create routes folder for managing auth,profile,request routers
+- Create authRouter,profileRouter,requestRouter
+- Import these routers in app.js.
+
+
