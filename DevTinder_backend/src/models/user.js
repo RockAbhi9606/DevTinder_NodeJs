@@ -2,11 +2,13 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const connectionRequest = require('./connectionRequest');
 
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true,
+        index: true,
         minLength: 2,
         maxLength: 50
     },
@@ -38,6 +40,10 @@ const userSchema = new mongoose.Schema({
         }
         //match: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/
     },
+    about: {
+        type: String,
+        default: "About section"
+    },
     age: {
         type: Number,
         max: 100,
@@ -45,12 +51,16 @@ const userSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        validate(value) {
-            if (!["male", "female", "other"].includes(value)) {
-                throw new Error("Gender data is invalid");
-            }
+        enum: {
+            values: ["male", "female", "other"],
+            message: `{VALUE} of gender is incorrect`
+        },
+        // validate(value) {
+        //     if (!["male", "female", "other"].includes(value)) {
+        //         throw new Error("Gender data is invalid");
+        //     }
 
-        }
+        // }
     },
     photoUrl: {
         type: String,
@@ -68,6 +78,9 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 })
+
+//compound indexing
+userSchema.index({ firstName: 1, lastName: 1 })
 
 userSchema.methods.getJWT = async function () {
     const user = this;

@@ -53,36 +53,6 @@ demoRouter.delete('/user', async (req, res) => {
     }
 })
 
-//User Update Api
-demoRouter.patch('/user/:userId', async (req, res) => {
-    const userId = req.params?.userId;
-    const data = req.body;
 
-    try {
-        const ALLOWED_UPDATES = ["age", "gender", "photoUrl", "skills"];
-        const isUpdateAllowed = Object.keys(data).every((k) => ALLOWED_UPDATES.includes(k));
-
-        if (!isUpdateAllowed) {
-            throw new Error("Update not Allowed");
-        }
-
-        if (data?.skills.length > 10) {
-            throw new Error("skills can not be more than 10");
-        }
-
-        if (data?.photoUrl && !validator.isURL(data?.photoUrl)) {
-            throw new Error("photoUrl is not valid");
-        }
-
-        const user = await User.findByIdAndUpdate({ _id: userId }, data,
-            {
-                returnDocument: 'after',
-                runValidators: true
-            })
-        res.send("User updated successfully")
-    } catch (err) {
-        res.status(400).send("Updates Failed: " + err.message);
-    }
-})
 
 module.exports = demoRouter;

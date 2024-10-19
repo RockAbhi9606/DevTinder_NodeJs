@@ -2,7 +2,6 @@ Start Project- npm init or npm init -y
 install express - npm i express
 install nodemon- npm i -g nodemon
 
-
 - node_modules, package.json, package-lock.json
 - Install express
 - Create a server
@@ -21,8 +20,8 @@ install nodemon- npm i -g nodemon
 - Order of the routes matter a lot
 - Install Postman app and make a workspace/collectio › test API call
 - Write logic to handle GET, POST, PATCH, DELETE API Calls and test them on Postman
-- Explore routing and use of ?, +, (, * in the routes
-- Use of regex in routes /a/ • /.*flys/
+- Explore routing and use of ?, +, (, \* in the routes
+- Use of regex in routes /a/ • /.\*flys/
 - Reading the query params in the routes
 - Reading the dynamic routes
 
@@ -39,7 +38,7 @@ install nodemon- npm i -g nodemon
 
 - Create a free cluster on MongoD official website (Mongo Atlas)
 - Install mongoose Library
-- Connect your application to the Database "Connection-url*/devTinder
+- Connect your application to the Database "Connection-url\*/devTinder
 - Call the connect function and connect to database before starting application on 7777
 - Create a user-Schena & user Model
 - Create POST /sigup API to add date to database
@@ -97,4 +96,13 @@ install nodemon- npm i -g nodemon
 - Create authRouter,profileRouter,requestRouter
 - Import these routers in app.js.
 
-
+- Create Connection Request Schema.
+- Send Connection Request API
+- Proper validation of Data
+- Think about ALL corner cases.
+- schema.pre("save") function.
+- $or query $and query in mongoose.
+- Read more about indexes in mongodb
+- why do we need to index in DB?
+- what is advantages and disadvantages of index in mongodb?
+- Read this article about compound indexes -
