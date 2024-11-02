@@ -106,3 +106,7 @@ install nodemon- npm i -g nodemon
 - why do we need to index in DB?
 - what is advantages and disadvantages of index in mongodb?
 - Read this article about compound indexes -
+- Always think about corner cases
+
+- Write a code with proper validation for POST /request/review/:status/:requestId
+- Thought process - POST vs GET
