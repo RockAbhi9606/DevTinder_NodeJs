@@ -6,7 +6,6 @@ const authRouter = express.Router();
 
 authRouter.post("/signup", async (req, res) => {
     try {
-        debugger
         const { firstName, lastName, email, password, age, gender, photoUrl } = req.body;
         //validation of signup data
         validationSignUpData(req);
