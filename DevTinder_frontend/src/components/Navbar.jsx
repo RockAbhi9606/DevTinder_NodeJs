@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { BASE_URL } from "../utils/constant";
+import { BASE_URL, DUMMY_IMG } from "../utils/constant";
 import { removeUser } from "../store/userSlice";
+import { removeFeed } from "../store/feedSlice";
+import { removeConnections } from "../store/connectionsSlice";
+import { removeRequests } from "../store/requestsSlice";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
@@ -13,6 +16,10 @@ const Navbar = () => {
     try {
       await axios.post(BASE_URL + "logout", {}, { withCredentials: true });
       dispatch(removeUser());
+      dispatch(removeFeed());
+      dispatch(removeConnections());
+      dispatch(removeRequests());
+      localStorage.removeItem("user");
       return navigate("/login");
     } catch (err) {
       console.error(err);
@@ -48,10 +55,7 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img
-                    alt={`${user.firstName} image`}
-                    src="https://abhishek.jpg"
-                  />
+                  <img alt={`${user.firstName} image`} src={user.photoUrl || DUMMY_IMG} />
                 </div>
               </div>
               <ul
@@ -65,7 +69,10 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to="connections">Connections</Link>
+                </li>
+                <li>
+                  <Link to="requests">Requests pendings</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>

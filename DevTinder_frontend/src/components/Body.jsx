@@ -14,7 +14,6 @@ const Body = () => {
 
   const fetchUser = async () => {
     try {
-      if (user) return;
       const res = await axios.get(BASE_URL + "profile/view", {
         withCredentials: true,
       });
@@ -29,7 +28,7 @@ const Body = () => {
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  },[]);
 
   return (
     <div>

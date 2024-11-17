@@ -3,12 +3,12 @@ import DEVELOPER_IMAGE from "../assets/images/developer_image.jpg";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constant";
 
 const Login = () => {
-  const [email, setEmail] = useState("abhi@gmail.com");
-  const [password, setPassword] = useState("Abhi@1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -115,13 +115,13 @@ const Login = () => {
 
           <p className="text-sm text-center text-white">
             Don't have an account?
-            <a
-              href="#"
+            <Link
+              to="/signup"
               className="font-medium text-indigo-600 hover:text-indigo-500"
             >
               {" "}
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
       </div>

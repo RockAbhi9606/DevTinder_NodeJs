@@ -21,10 +21,24 @@
 - Refactor our code to add constants file + create a components folder
 - You should not be access other routes without login
 - If token is not present, redirect to login page.
+- Logout Feature
+- Get the feed and add the feed in th store
+- build the user card on feed
+- Edit Profile Feature
+- Show Toast Message on save of profile.
+- New Page - See all my connections.
+- New Page - See all my Conenction REquests.
+- Feature - Accept/Reject Connection Request.
+
+Remaining:
+
+- Send/ignore the user card from Feed
+- Signup New User
+- E2ETesting
 
 Body
-    NavBar
-    Route=/ → Feed
-    Route=/Login - Login
-    Route=/connetions → Connections
-    Router=/profile → Profile
+NavBar
+Route=/ → Feed
+Route=/Login - Login
+Route=/connetions → Connections
+Router=/profile → Profile
